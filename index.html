@@ -1,0 +1,105 @@
+<div class="expert-typing-block-3">
+    <div class="expert-photo-wrap-3">
+        <img src="photo.jpg" alt="Эксперт">
+    </div>
+    <div class="expert-text-wrap-3">
+        <span id="typing-field-3"></span><span class="typing-cursor-3">|</span>
+    </div>
+</div>
+
+<style>
+    .expert-typing-block-3 {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 28px;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 24px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .expert-photo-wrap-3 {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: #f1f5f9;
+        border: 2px solid #f39237;
+    }
+
+    .expert-photo-wrap-3 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .expert-text-wrap-3 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #1e293b;
+        font-weight: 400;
+        /* Текст короче предыдущих, минимальную высоту можно сделать чуть меньше */
+        min-height: 80px; 
+        flex-grow: 1;
+    }
+
+    .typing-cursor-3 {
+        color: #f39237;
+        font-weight: 700;
+        animation: blink-3 0.7s infinite;
+        margin-left: 2px;
+    }
+
+    @keyframes blink-3 {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @media (max-width: 640px) {
+        .expert-typing-block-3 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+            padding: 20px;
+        }
+        
+        .expert-text-wrap-3 {
+            min-height: 140px; /* Адаптивная высота под мобильные устройства */
+            text-align: left;
+        }
+    }
+</style>
+
+<script>
+    const textToType3 = "Посмотрите мою видеолекцию. В ней я научу вас правильно действовать, если вы заметили беспилотник. Объясню, какие опасности несет упавший дрон, и покажу, как подразделения МЧС используют беспилотную технику.";
+    
+    let charIndex3 = 0;
+    const typingSpeed3 = 25; // Комфортная скорость печати
+    const readPause3 = 7000; // 7 секунд на чтение перед повтором
+    
+    const textField3 = document.getElementById('typing-field-3');
+
+    function startTyping3() {
+        if (charIndex3 < textToType3.length) {
+            textField3.textContent += textToType3.charAt(charIndex3);
+            charIndex3++;
+            setTimeout(startTyping3, typingSpeed3);
+        } else {
+            setTimeout(() => {
+                textField3.textContent = '';
+                charIndex3 = 0;
+                startTyping3();
+            }, readPause3);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', startTyping3);
+</script>
